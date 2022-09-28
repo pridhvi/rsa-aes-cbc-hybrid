@@ -1,4 +1,5 @@
-# rsa-aes-cbc-hybrid
+# RSA AES-CBC Hybrid Encryption
+
 An implementation of a hybrid encryption system involving RSA, AES256-CBC
 
 ## Requirements
