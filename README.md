@@ -4,9 +4,9 @@ An implementation of a hybrid encryption system involving RSA, AES256-CBC
 
 ## Requirements
 
-1. Receiver public and private keys (RSA keys)
-2. Sender public and private keys (RSA keys) - (This is for signing which will be implemented)
-3. A input file which is to be encrypted
+1. Receiver public and private keys (RSA keys in pem format)
+2. Sender public and private keys (RSA keys in pem format) - (This is for signing which will be implemented)
+3. Input file which is to be encrypted
 
 ## Encrypt command
 
@@ -14,7 +14,7 @@ An implementation of a hybrid encryption system involving RSA, AES256-CBC
 
 ## Decrypt command
 
-`python3 fcrypt.py -e <receiver_private_key_file> <sender_public_key_file> <input_ciphertext_file> <output_plaintext_file>`
+`python3 fcrypt.py -d <receiver_private_key_file> <sender_public_key_file> <input_ciphertext_file> <output_plaintext_file>`
 
 
 ## Encryption Process
