@@ -1,6 +1,6 @@
 # RSA AES-CBC Hybrid Encryption
 
-An implementation of a hybrid encryption system involving RSA, AES256-CBC
+An implementation of a hybrid encryption system involving RSA, and AES256-CBC
 
 ## Requirements
 
