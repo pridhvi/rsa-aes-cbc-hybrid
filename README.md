@@ -25,7 +25,7 @@ An implementation of a hybrid encryption system involving RSA, AES256-CBC
 4. The session key is encrypted using receivers public key.
 5. The final output is a package is made of (encrypted message + encrypted session_key + iv + signature)
 
-## Decryption
+## Decryption Process
 
 1. The encrypted is package is split into the separate values.
 2. The digital signature is verified using sender’s public key and if the verification fails the
