@@ -4,9 +4,9 @@ An implementation of a hybrid encryption system involving RSA, AES256-CBC
 
 ## Requirements
 
-1. Receiver public and private keys (RSA keys in pem format)
-2. Sender public and private keys (RSA keys in pem format) - (This is for signing which will be implemented)
-3. Input file which is to be encrypted
+1. Receiver public and private keys (RSA keys in pem or der format)
+2. Sender public and private keys (RSA keys in pem or der format)
+3. Input plaintext file which is to be encrypted
 
 ## Encrypt command
 
@@ -19,18 +19,16 @@ An implementation of a hybrid encryption system involving RSA, AES256-CBC
 
 ## Encryption Process
 
-The input plaintext file is read.
+1. Random 256-bit session key and 128-bit Initialisation Vector are generated.
+2. The session key and iv are used to encrypt the plaintext.
+3. The encrypted plaintext is digitally signed using the sender’s private key.
+4. The session key is encrypted using receivers public key.
+5. The final output is a package is made of (encrypted message + encrypted session_key + iv + signature)
 
-### AES256-CBC
+## Decryption
 
-A random 256 bit Session Key and 128 bit Initialisation Vector (iv) are created.
-
-These are used to AES256-CBC encrypt the plaintext.
-
-If the size of the plaintext is not a multiple of 128 bits (16 bytes) padding is added as required by AES.
-
-### RSA
-
-The Receiver Public Key is used to RSA encrypt the above Session Key.
-
-The output ciphertext is a combination of (Encrypted Message + Encrypted Session Key + iv)
+1. The encrypted is package is split into the separate values.
+2. The digital signature is verified using sender’s public key and if the verification fails the
+program is aborted before the decryption is done.
+3. The encrypted session key is decrypted using receiver’s private key.
+4. The encrypted message is decrypted using the session key.
