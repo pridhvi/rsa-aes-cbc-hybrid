@@ -2,8 +2,6 @@
 function encryptFile() {
     var file = window.document.getElementById('enc-file'),
         reader = new FileReader();
-    console.log(file.files[0]);
-    console.log('TESTING');
 
     reader.onload = function(e) {
         var data = e.target.result,
@@ -13,9 +11,9 @@ function encryptFile() {
             .then(key => {
                 crypto.subtle.encrypt({ 'name': 'AES-GCM', iv }, key, data)
 
-                var keyByteArray = new Uint8Array(key);
+                var byteArray = new Uint8Array(key);
                 var downloadEncKey = window.document.getElementById('download-enc-key-button');
-                downloadEncKey.href = window.URL.createObjectURL(new Blob([keyByteArray], { type: 'application/octet-stream' }));
+                downloadEncKey.href = window.URL.createObjectURL(new Blob([byteArray], { type: 'application/octet-stream' }));
                 downloadEncKey.download = file.files[0].name + '.key';
 
                 var downloadEncKeyMessage = window.document.getElementById('download-enc-key-message');
@@ -41,4 +39,5 @@ function encryptFile() {
     }
 
     reader.readAsArrayBuffer(file.files[0]);
+    return false;
 }
