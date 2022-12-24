@@ -38,9 +38,11 @@
             <div class="decrypt-container">
                 <h1>Decrypt</h1>
 
-                <form class="choose-file" onsubmit="decryptFile(event)">
+                <form class="choose-file" onsubmit="return decryptFile()">
                     <label for="dec-file">Choose a file to decrypt</label>
                     <input type="file" id="dec-file" name="dec-file">
+                    <label for="dec-key">Choose a key to use for decryption</label>
+                    <input type="file" id="dec-key" name="dec-key">
                     <button type="submit" id="decrypt-button">Decrypt</button>
                 </form>
 
